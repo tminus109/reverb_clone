@@ -1,14 +1,14 @@
 import mysql from "mysql2";
-import dbConfig from "./configs/dbConfig";
+import dbConfig from "./config/dbConfig";
 
 const dbPool = mysql.createPool(dbConfig);
 
 dbPool.on("connection", (connection) => {
-  connection.on("error", function (error: Error) {
-    console.error(error);
+  connection.on("error", function (err: Error) {
+    console.error(err.message);
   });
-  connection.on("close", function (error: Error) {
-    console.error(error);
+  connection.on("close", function (err: Error) {
+    console.error(err.message);
   });
 });
 
