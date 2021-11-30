@@ -6,6 +6,6 @@ REACT - frontend,
 Express - backend,
 MySQL - database.
 
-- TypeScript,
-- Eslint,
-- Prettier.
+- TypeScript
+- Eslint
+- Prettier
