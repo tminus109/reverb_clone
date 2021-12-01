@@ -2,4 +2,6 @@
 
 A simplified clone of reverb.com, a webshop similar to Ebay, where you can sell and buy instruments.
 
-React, Express, MySQL, TypeScript, Eslint, Prettier, Jest.
+Project: TypeScript, Eslint, Prettier, Jest.
+Frontend: React | react-router-dom.
+Backend: Express, MySQL | nodemon, cors, db-migrate.

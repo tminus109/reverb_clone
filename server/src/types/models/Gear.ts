@@ -1,6 +1,6 @@
-import Category from "./Category";
-import Condition from "./Condition";
-import GearStatus from "./GearStatus";
+import Category from "../enums/Category";
+import Condition from "../enums/Condition";
+import GearStatus from "../enums/GearStatus";
 
 type Gear = {
   id: number;
