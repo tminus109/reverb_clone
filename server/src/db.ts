@@ -1,7 +1,7 @@
 import mysql from "mysql2";
-import dbConfig from "./config/dbConfig";
+import dbEnvs from "./config/dbEnvs";
 
-const dbPool = mysql.createPool(dbConfig);
+const dbPool = mysql.createPool(dbEnvs);
 
 dbPool.on("connection", (connection) => {
   connection.on("error", function (err: Error) {

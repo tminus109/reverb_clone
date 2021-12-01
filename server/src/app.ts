@@ -8,7 +8,7 @@ const server = app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello, Server!");
+  res.send("Hello from Reverb Clone Server!");
 });
 
 app.use(cors());
