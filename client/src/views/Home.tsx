@@ -1,4 +1,5 @@
-function home() {
+// eslint-disable-next-line react/function-component-definition
+function Home() {
   return (
     <div>
       <h1>Home sweet home</h1>
@@ -6,4 +7,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;

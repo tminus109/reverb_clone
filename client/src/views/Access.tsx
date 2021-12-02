@@ -1,5 +1,8 @@
-function access() {
-  return <h1>Sign Up or Sign In</h1>;
+import SignUp from "../components/forms/SignUp";
+
+// eslint-disable-next-line react/function-component-definition
+function Access() {
+  return <SignUp />;
 }
 
-export default access;
+export default Access;
