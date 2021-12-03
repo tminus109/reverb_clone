@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import isEmail from "validator/lib/isEmail";
+import handleSignUp from "../../services/handleSignUp";
 
 // eslint-disable-next-line react/function-component-definition
 function SignUp() {
@@ -11,29 +11,36 @@ function SignUp() {
   const [invalidEmail, setInvalidEmail] = useState<string>("");
   const [confirmEmail, setConfirmEmail] = useState<string>("");
   const [invalidPassword, setInvalidPassword] = useState<string>("");
-  // const [error, setError] = useState<string>("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setInvalidEmail("");
-    setConfirmEmail("");
-    setInvalidPassword("");
-    // setError("");
-    if (!isEmail(email)) {
-      setInvalidEmail("Email is not a valid email");
-    }
-    if (email !== email2) {
-      setConfirmEmail("Email confirmation must match email");
-    }
-    if (password.length < 8) {
-      setInvalidPassword("Password must be at least 8 characters long");
-    }
-  };
+  const [error, setError] = useState<string>("");
 
   return (
     <div className="signup_form">
       <h1>Create Your Account</h1>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(e) =>
+          handleSignUp(
+            e,
+            firstName,
+            setFirstName,
+            lastName,
+            setLastName,
+            email,
+            setEmail,
+            email2,
+            setEmail2,
+            password,
+            setPassword,
+            invalidEmail,
+            setInvalidEmail,
+            confirmEmail,
+            setConfirmEmail,
+            invalidPassword,
+            setInvalidPassword,
+            error,
+            setError
+          )
+        }
+      >
         <label htmlFor="first_name">
           First Name:
           <input
@@ -99,8 +106,8 @@ function SignUp() {
         </label>
         <span>(at least 8 characters)</span>
         <input type="submit" />
+        <div className="message">{error && <p>{error}</p>}</div>
       </form>
-      {/* <div className="message">{error && <p>{error}</p>}</div> */}
     </div>
   );
 }
