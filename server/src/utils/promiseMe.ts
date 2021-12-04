@@ -1,6 +1,6 @@
 import dbPool from "../db";
 
-function getMeAPromise(query: string, [...placeholders]): Promise<any> {
+export function getMeAPromise(query: string, [...placeholders]): Promise<any> {
   return new Promise((resolve, reject) => {
     dbPool.getConnection((err, connection) => {
       if (err) {
@@ -20,5 +20,3 @@ function getMeAPromise(query: string, [...placeholders]): Promise<any> {
     });
   });
 }
-
-export default getMeAPromise;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import handleSignUp from "../../services/handleSignUp";
 
 // eslint-disable-next-line react/function-component-definition
@@ -11,7 +11,10 @@ function SignUp() {
   const [invalidEmail, setInvalidEmail] = useState<string>("");
   const [confirmEmail, setConfirmEmail] = useState<string>("");
   const [invalidPassword, setInvalidPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const controller = new AbortController();
+
+  useEffect(() => () => controller.abort(), []);
 
   return (
     <div className="signup_form">
@@ -21,23 +24,15 @@ function SignUp() {
           handleSignUp(
             e,
             firstName,
-            setFirstName,
             lastName,
-            setLastName,
             email,
-            setEmail,
             email2,
-            setEmail2,
             password,
-            setPassword,
-            invalidEmail,
             setInvalidEmail,
-            confirmEmail,
             setConfirmEmail,
-            invalidPassword,
             setInvalidPassword,
-            error,
-            setError
+            setMessage,
+            controller.signal
           )
         }
       >
@@ -106,7 +101,7 @@ function SignUp() {
         </label>
         <span>(at least 8 characters)</span>
         <input type="submit" />
-        <div className="message">{error && <p>{error}</p>}</div>
+        <div className="message">{message && <p>{message}</p>}</div>
       </form>
     </div>
   );
