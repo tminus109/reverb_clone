@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import validateSignUp from "./middleware/validateSignUp";
+import signup_router from "./routes/signup";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -12,6 +14,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
-// app.use(express.json());
+app.use("/signup", validateSignUp, signup_router);
 
 export default server;

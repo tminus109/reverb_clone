@@ -4,4 +4,4 @@ A simplified clone of reverb.com, a webshop similar to Ebay, where you can sell 
 
 - Project: Yarn, TypeScript, Eslint, Prettier, Jest | validator.
 - Frontend: React | react-router-dom.
-- Backend: Node, MySQL | express, nodemon, cors, db-migrate.
+- Backend: Node, MySQL | express, nodemon, cors, db-migrate, bcrypt.
