@@ -24,7 +24,7 @@ const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
     }
   } catch {
     (err: Error) => {
-      res.status(400).json(err);
+      res.json(err);
     };
   }
 };

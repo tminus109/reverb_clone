@@ -1,6 +1,6 @@
 enum UserStatus {
-  Pending,
-  Active,
+  Pending = "Pending",
+  Active = "Active",
 }
 
 export default UserStatus;

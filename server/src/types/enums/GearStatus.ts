@@ -1,6 +1,6 @@
 enum GearStatus {
-  ForSale,
-  Sold,
+  ForSale = "For Sale",
+  Sold = "Sold",
 }
 
 export default GearStatus;

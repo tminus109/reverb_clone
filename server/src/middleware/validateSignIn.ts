@@ -31,7 +31,7 @@ const validateSignIn = async (
     }
   } catch {
     (err: Error) => {
-      res.status(400).json(err);
+      res.json(err);
     };
   }
 };
