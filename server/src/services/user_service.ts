@@ -2,33 +2,26 @@ import User from "../types/models/User";
 import { crypt } from "../utils/blowfishCrypt";
 import { getMeAPromise } from "../utils/promiseMe";
 
-export const getUserRecordByEmail = async (email: string): Promise<User> => {
-  const query = `SELECT email FROM users WHERE email = ? LIMIT 1;`;
-  const user = await getMeAPromise(query, [email]);
-  return user;
-};
-
 export const createNewUserRecord = async (
   firstName: string,
   lastName: string,
   email: string,
   password: string
-): Promise<number> => {
-  const hashedPassword = crypt(password);
-  const insertQuery = `INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?);`;
-  await getMeAPromise(insertQuery, [
-    firstName,
-    lastName,
-    email,
-    hashedPassword,
-  ]);
-  return await getMeAPromise(`SELECT LAST_INSERT_ID();`, []);
+) => {
+  const newUser = `INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?);`;
+  await getMeAPromise(newUser, [firstName, lastName, email, crypt(password)]);
+
+  const newShop = `INSERT INTO shops (userId, shopName) VALUES (?, ?);`;
+  const userId = getMeAPromise(`SELECT LAST_INSERT_ID();`, []);
+  const shopName = firstName + "'s Gear Shop";
+  await getMeAPromise(newShop, [userId, shopName]);
+
+  const updateUserRecordWithShopId = `UPDATE users SET shopId  = ? WHERE id = ?;`;
+  const shopId = getMeAPromise(`SELECT LAST_INSERT_ID();`, []);
+  await getMeAPromise(updateUserRecordWithShopId, [shopId, userId]);
 };
 
-export const updateUserRecordWithShopId = async (
-  shopId: number,
-  id: number
-) => {
-  const query = `UPDATE users SET shopId  = ? WHERE id = ?;`;
-  await getMeAPromise(query, [shopId, id]);
+export const getUserRecordByEmail = async (email: string): Promise<User> => {
+  const query = `SELECT email FROM users WHERE email = ? LIMIT 1;`;
+  return await getMeAPromise(query, [email]);
 };
