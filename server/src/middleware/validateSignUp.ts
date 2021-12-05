@@ -4,7 +4,7 @@ import isEmailUnique from "../utils/isEmailUnique";
 
 const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!req.body) {
+    if (Object.keys(req.body).length === 0) {
       throw new Error("Empty request received");
     } else if (
       !req.body.firstName ||
