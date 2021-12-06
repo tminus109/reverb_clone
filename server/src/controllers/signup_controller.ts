@@ -9,7 +9,10 @@ export const addNewUser = async (req: Request, res: Response) => {
       req.body.email,
       req.body.password
     );
-    res.json({ message: "Sign up was successful, you may sign in now" });
+    res.status(201).json({
+      message:
+        "Sign up was successful, confirm your account by clicking on the link sent to your email before sign in",
+    });
   } catch {
     (err: Error) => {
       res.json(err);

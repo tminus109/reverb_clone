@@ -11,17 +11,15 @@ export const createNewUserRecord = async (
   const newUser = `INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?);`;
   await getMeAPromise(newUser, [firstName, lastName, email, crypt(password)]);
 
+  const getUserId = `SELECT id FROM users WHERE email = ?;`;
+  const userId = await getMeAPromise(getUserId, [email]);
+
   const newShop = `INSERT INTO shops (userId, shopName) VALUES (?, ?);`;
-  const userId = getMeAPromise(`SELECT LAST_INSERT_ID();`, []);
   const shopName = firstName + "'s Gear Shop";
   await getMeAPromise(newShop, [userId, shopName]);
-
-  const updateUserRecordWithShopId = `UPDATE users SET shopId  = ? WHERE id = ?;`;
-  const shopId = getMeAPromise(`SELECT LAST_INSERT_ID();`, []);
-  await getMeAPromise(updateUserRecordWithShopId, [shopId, userId]);
 };
 
 export const getUserRecordByEmail = async (email: string): Promise<User> => {
-  const query = `SELECT email FROM users WHERE email = ? LIMIT 1;`;
+  const query = `SELECT email FROM users WHERE email = ?;`;
   return await getMeAPromise(query, [email]);
 };
