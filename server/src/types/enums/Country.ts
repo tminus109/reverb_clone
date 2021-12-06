@@ -1,6 +1,6 @@
 enum Country {
-  Australia = "Australia",
-  Hungary = "Hungary",
+  AUS = "Australia",
+  HUN = "Hungary",
 }
 
 export default Country;

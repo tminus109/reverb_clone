@@ -2,14 +2,13 @@ import UserStatus from "../enums/UserStatus";
 import UserType from "../enums/UserType";
 
 type User = {
-  id?: number;
-  shopId?: number;
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  userType?: UserType;
-  userStatus?: UserStatus;
+  type: UserType;
+  status: UserStatus;
 };
 
 export default User;
