@@ -15,11 +15,11 @@ const validateSignIn = async (
     ) {
       throw new Error("All input fields are required");
     } else {
-      const query = `SELECT * FROM users where email = ? LIMIT 1`;
+      const query = `SELECT * FROM users where email = ?`;
       const user: User = await getMeAPromise(query, [req.body.email]);
       if (!user || user.password !== req.body.password) {
         throw new Error("Username or password is incorrect");
-      } else if (user.userStatus === "Pending") {
+      } else if (user.status === "Pending") {
         throw new Error(
           "Account is not verified, click on the verification link sent to your email"
         );

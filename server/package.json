@@ -14,6 +14,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.6",
     "@types/validator": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
@@ -31,6 +32,7 @@
     "db-migrate": "^0.11.13",
     "db-migrate-mysql": "^2.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "validator": "^13.7.0"
   }
