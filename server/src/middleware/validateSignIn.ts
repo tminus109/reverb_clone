@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import bcrypt from "bcrypt";
 import User from "../types/models/User";
 import { getMeAPromise } from "../utils/promiseMe";
 
@@ -17,7 +18,7 @@ const validateSignIn = async (
     } else {
       const query = `SELECT * FROM users where email = ?`;
       const user: User = await getMeAPromise(query, [req.body.email]);
-      if (!user || user.password !== req.body.password) {
+      if (!user || !bcrypt.compare(req.body.password, user.password)) {
         throw new Error("Username or password is incorrect");
       } else if (user.status === "Pending") {
         throw new Error(
