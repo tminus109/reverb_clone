@@ -5,7 +5,8 @@ import NotFound from "./views/NotFound";
 import Access from "./views/Access";
 import Sell from "./views/Sell";
 
-function app() {
+// eslint-disable-next-line react/function-component-definition
+function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,4 +19,4 @@ function app() {
   );
 }
 
-export default app;
+export default App;

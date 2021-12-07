@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import isEmail from "validator/lib/isEmail";
+import { TokenContext } from "../context/TokenContext";
 import User from "../types/models/User";
 import { fetchPost } from "../utils/fetchMe";
+
+const { setToken } = useContext(TokenContext);
 
 const handleSignIn = (
   e: React.FormEvent<HTMLFormElement>,
@@ -27,9 +30,8 @@ const handleSignIn = (
   if (isEmail(email) && password.length >= 8) {
     const signinUser: User = { email, password };
     fetchPost(`${process.env.REACT_APP_SERVER}login`, signal, signinUser)
-      .then
-      // ...
-      ()
+      .then((data) => localStorage.setItem("token", data))
+      .then((data) => setToken(data))
       .catch((err) => setMessage(err.message));
   }
 };
