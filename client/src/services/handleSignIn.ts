@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+// import { useNavigate } from "react-router-dom";
 import isEmail from "validator/lib/isEmail";
-import { TokenContext } from "../context/TokenContext";
 import User from "../types/models/User";
 import { fetchPost } from "../utils/fetchMe";
-
-const { setToken } = useContext(TokenContext);
-const navigate = useNavigate();
 
 const handleSignIn = (
   e: React.FormEvent<HTMLFormElement>,
@@ -15,8 +11,11 @@ const handleSignIn = (
   setInvalidEmail: Function,
   setInvalidPassword: Function,
   setMessage: Function,
+  setToken: Function,
   signal: AbortSignal
 ) => {
+  // const navigate = useNavigate();
+
   e.preventDefault();
   setInvalidEmail("");
   setInvalidPassword("");
@@ -33,11 +32,18 @@ const handleSignIn = (
     const signinUser: User = { email, password };
     fetchPost(`${process.env.REACT_APP_SERVER}login`, signal, signinUser)
       .then((data) => {
-        setToken(data);
-        localStorage.setItem("token", data);
-        navigate("/home");
+        setToken(data.token);
+        localStorage.setItem("token", data.token);
+        // navigate("/home");
       })
-      .catch((err) => setMessage(err.message));
+      .catch((err) => {
+        if (err.name === "AbortError") {
+          // eslint-disable-next-line no-console
+          console.error("Fetch aborted by user");
+        } else {
+          setMessage(err.message);
+        }
+      });
   }
 };
 

@@ -1,4 +1,4 @@
-import { createContext, FC, useState } from "react";
+import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 interface TokenContextInterface {
   token: string;
@@ -10,17 +10,18 @@ const defaultState = { token: "", setToken: () => {} };
 export const TokenContext = createContext<TokenContextInterface>(defaultState);
 
 // eslint-disable-next-line react/function-component-definition
-export const TokenProvider: FC = (children) => {
-  const [token, setToken] = useState(defaultState.token);
+export function TokenProvider({ children }: { children: ReactNode }) {
+  const [token, setToken] = useState<string>("");
+  const value = useMemo(() => ({ token, setToken }), []);
   return (
-    <TokenContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        token,
-        setToken,
-      }}
-    >
-      {children}
-    </TokenContext.Provider>
+    <TokenContext.Provider value={value}>{children}</TokenContext.Provider>
   );
+}
+
+export const useTokenContext = () => {
+  const context = useContext(TokenContext);
+  if (context === undefined) {
+    throw new Error("TokenContext is undefined");
+  }
+  return context;
 };

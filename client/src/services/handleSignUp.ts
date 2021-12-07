@@ -3,7 +3,7 @@ import isEmail from "validator/lib/isEmail";
 import User from "../types/models/User";
 import { fetchPost } from "../utils/fetchMe";
 
-const handleSignUp = async (
+const handleSignUp = (
   e: React.FormEvent<HTMLFormElement>,
   firstName: string,
   lastName: string,

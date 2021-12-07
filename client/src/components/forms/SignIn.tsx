@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTokenContext } from "../../context/TokenContext";
 import handleSignIn from "../../services/handleSignIn";
 
 // eslint-disable-next-line react/function-component-definition
@@ -8,6 +9,7 @@ function SignIn() {
   const [invalidEmail, setInvalidEmail] = useState<string>("");
   const [invalidPassword, setInvalidPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const { setToken } = useTokenContext();
   const controller = new AbortController();
 
   useEffect(() => () => controller.abort(), []);
@@ -24,6 +26,7 @@ function SignIn() {
             setInvalidEmail,
             setInvalidPassword,
             setMessage,
+            setToken,
             controller.signal
           );
         }}
