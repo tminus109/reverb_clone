@@ -5,7 +5,7 @@ import {
   getUserIdByEmail,
 } from "../services/user_service";
 
-export const addNewUser = async (req: Request, res: Response) => {
+const addNewUser = async (req: Request, res: Response) => {
   try {
     await createNewUserRecord(
       req.body.firstName,
@@ -19,9 +19,9 @@ export const addNewUser = async (req: Request, res: Response) => {
       message:
         "Sign up was successful, confirm your account by clicking on the link sent to your email before sign in",
     });
-  } catch {
-    (err: Error) => {
-      res.json(err);
-    };
+  } catch (err) {
+    res.json(err);
   }
 };
+
+export default addNewUser;

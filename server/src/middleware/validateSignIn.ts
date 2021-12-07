@@ -30,10 +30,8 @@ const validateSignIn = async (
         next();
       }
     }
-  } catch {
-    (err: Error) => {
-      res.json(err);
-    };
+  } catch (err) {
+    res.json(err);
   }
 };
 

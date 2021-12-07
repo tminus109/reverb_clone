@@ -22,10 +22,8 @@ const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
     } else {
       next();
     }
-  } catch {
-    (err: Error) => {
-      res.json(err);
-    };
+  } catch (err) {
+    res.json(err);
   }
 };
 
