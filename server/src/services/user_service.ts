@@ -1,3 +1,4 @@
+import User from "../types/models/User";
 import { crypt } from "../utils/blowfishCrypt";
 import { getMeAPromise } from "../utils/promiseMe";
 
@@ -14,4 +15,9 @@ export const createNewUserRecord = async (
 export const getUserIdByEmail = async (email: string): Promise<number> => {
   const userId = `SELECT id FROM users WHERE email = ?;`;
   return await getMeAPromise(userId, [email]);
+};
+
+export const getUserRecordByEmail = async (email: string): Promise<User> => {
+  const user = `SELECT * FROM users where email = ?`;
+  return await getMeAPromise(user, [email]);
 };

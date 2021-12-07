@@ -1,5 +1,6 @@
 import React from "react";
 import isEmail from "validator/lib/isEmail";
+import User from "../types/models/User";
 import { fetchPost } from "../utils/fetchMe";
 
 const handleSignUp = async (
@@ -31,12 +32,8 @@ const handleSignUp = async (
   }
 
   if (firstName && lastName && isEmail(email) && password.length >= 8) {
-    fetchPost(`${process.env.REACT_APP_SERVER}signup`, signal, {
-      firstName,
-      lastName,
-      email,
-      password,
-    })
+    const newUser: User = { firstName, lastName, email, password };
+    fetchPost(`${process.env.REACT_APP_SERVER}signup`, signal, newUser)
       .then((res) => setMessage(res.message))
       .catch((err) => {
         if (err.name === "AbortError") {

@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import User from "../types/models/User";
 import { getMeAPromise } from "../utils/promiseMe";
+import { getUserRecordByEmail } from "../services/user_service";
 
 const validateSignIn = async (
   req: Request,
@@ -16,8 +17,7 @@ const validateSignIn = async (
     ) {
       throw new Error("All input fields are required");
     } else {
-      const query = `SELECT * FROM users where email = ?`;
-      const user: User = await getMeAPromise(query, [req.body.email]);
+      const user: User = await getUserRecordByEmail(req.body.email);
       if (!user || !bcrypt.compare(req.body.password, user.password)) {
         throw new Error("Username or password is incorrect");
       } else if (user.status === "Pending") {

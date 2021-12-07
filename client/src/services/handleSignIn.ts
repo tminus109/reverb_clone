@@ -1,5 +1,6 @@
 import React from "react";
 import isEmail from "validator/lib/isEmail";
+import User from "../types/models/User";
 import { fetchPost } from "../utils/fetchMe";
 
 const handleSignIn = (
@@ -24,10 +25,8 @@ const handleSignIn = (
   }
 
   if (isEmail(email) && password.length >= 8) {
-    fetchPost(`${process.env.REACT_APP_SERVER}login`, signal, {
-      email,
-      password,
-    })
+    const signinUser: User = { email, password };
+    fetchPost(`${process.env.REACT_APP_SERVER}login`, signal, signinUser)
       .then
       // ...
       ()
