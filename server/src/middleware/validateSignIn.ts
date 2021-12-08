@@ -20,7 +20,7 @@ const validateSignIn = async (
       const user: User = await getUserRecordByEmail(req.body.email);
       if (!user || !bcrypt.compare(req.body.password, user.password)) {
         throw new Error("Username or password is incorrect");
-      } else if (user.status === "Pending") {
+      } else if (user.status === "pending") {
         throw new Error(
           "Account is not verified, click on the verification link sent to your email"
         );

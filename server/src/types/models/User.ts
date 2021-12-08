@@ -1,5 +1,5 @@
-import UserStatus from "../enums/UserStatus";
-import UserType from "../enums/UserType";
+import Status from "../enums/Status";
+import Role from "../enums/Role";
 
 type User = {
   id?: number;
@@ -7,8 +7,8 @@ type User = {
   lastName?: string;
   email: string;
   password: string;
-  type?: UserType;
-  status?: UserStatus;
+  role?: Role;
+  status?: Status;
 };
 
 export default User;
