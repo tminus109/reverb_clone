@@ -6,7 +6,15 @@ import {
 } from "../services/user_service";
 
 const addNewUser = async (req: Request, res: Response) => {
+  console.log(req.body);
+  console.log("hello");
+
   try {
+    console.log(req.body.firstName);
+    console.log(req.body.lastName);
+    console.log(req.body.email);
+    console.log(req.body.password);
+
     await createNewUserRecord(
       req.body.firstName,
       req.body.lastName,
@@ -19,8 +27,8 @@ const addNewUser = async (req: Request, res: Response) => {
       message:
         "Sign up was successful, confirm your account by clicking on the link sent to your email before sign in",
     });
-  } catch (err) {
-    res.json(err);
+  } catch (error: any) {
+    res.json({ message: error.message });
   }
 };
 

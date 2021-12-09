@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import validateSignUp from "./middleware/validateSignUp";
@@ -7,6 +10,7 @@ import signin_router from "./routes/signin";
 
 const app = express();
 const port = process.env.PORT || 8080;
+
 const server = app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
@@ -16,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
+app.use(express.json());
 app.use("/signup", validateSignUp, signup_router);
 app.use("/signin", validateSignIn, signin_router);
 

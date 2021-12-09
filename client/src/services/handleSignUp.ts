@@ -35,12 +35,12 @@ const handleSignUp = (
     const newUser: User = { firstName, lastName, email, password };
     fetchPost(`${process.env.REACT_APP_SERVER}signup`, signal, newUser)
       .then((res) => setMessage(res.message))
-      .catch((err) => {
-        if (err.name === "AbortError") {
+      .catch((error) => {
+        if (error.name === "AbortError") {
           // eslint-disable-next-line no-console
-          console.error("Fetch aborted by user");
+          console.log("Fetch aborted by user");
         } else {
-          setMessage(err.message);
+          setMessage(error.message);
         }
       });
   }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import handleSignUp from "../../services/handleSignUp";
 
 // eslint-disable-next-line react/function-component-definition
-function SignUp() {
+function SignUpForm() {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -14,7 +14,7 @@ function SignUp() {
   const [message, setMessage] = useState<string>("");
   const controller = new AbortController();
 
-  useEffect(() => () => controller.abort(), []);
+  useEffect(() => () => controller.abort());
 
   return (
     <div className="signup_form">
@@ -107,4 +107,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpForm;

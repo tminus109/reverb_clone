@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { useTokenContext } from "../../context/TokenContext";
 import handleSignIn from "../../services/handleSignIn";
 
 // eslint-disable-next-line react/function-component-definition
-function SignIn() {
+function SignInForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [invalidEmail, setInvalidEmail] = useState<string>("");
@@ -12,7 +12,7 @@ function SignIn() {
   const { setToken } = useTokenContext();
   const controller = new AbortController();
 
-  useEffect(() => () => controller.abort(), []);
+  // useEffect(() => () => controller.abort());
 
   return (
     <div className="signin_form">
@@ -63,4 +63,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInForm;

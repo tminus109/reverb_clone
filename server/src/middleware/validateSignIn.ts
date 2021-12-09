@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import User from "../types/models/User";
-import { getMeAPromise } from "../utils/promiseMe";
 import { getUserRecordByEmail } from "../services/user_service";
 
 const validateSignIn = async (
@@ -30,8 +29,8 @@ const validateSignIn = async (
         next();
       }
     }
-  } catch (err) {
-    res.json(err);
+  } catch (error: any) {
+    res.json(error.message);
   }
 };
 

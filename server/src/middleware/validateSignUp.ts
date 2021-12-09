@@ -18,12 +18,12 @@ const validateSignUp = (req: Request, res: Response, next: NextFunction) => {
     } else if (!isEmailUnique(req.body.email)) {
       throw new Error("It seems like you already have an account");
     } else if (req.body.password.length < 8) {
-      throw new Error("Password must be at least 8 characters long");
+      throw new Error("Password must be at least 800 characters long");
     } else {
       next();
     }
-  } catch (err) {
-    res.json(err);
+  } catch (error: any) {
+    res.json({ message: error.message });
   }
 };
 

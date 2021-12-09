@@ -30,18 +30,18 @@ const handleSignIn = (
 
   if (isEmail(email) && password.length >= 8) {
     const signinUser: User = { email, password };
-    fetchPost(`${process.env.REACT_APP_SERVER}login`, signal, signinUser)
+    fetchPost(`${process.env.REACT_APP_SERVER}signin`, signal, signinUser)
       .then((data) => {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         // navigate("/home");
       })
-      .catch((err) => {
-        if (err.name === "AbortError") {
+      .catch((error) => {
+        if (error.name === "AbortError") {
           // eslint-disable-next-line no-console
           console.error("Fetch aborted by user");
         } else {
-          setMessage(err.message);
+          setMessage(error.message);
         }
       });
   }
