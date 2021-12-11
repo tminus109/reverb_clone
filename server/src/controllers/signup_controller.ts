@@ -1,19 +1,18 @@
 import { Request, Response } from "express";
-import { captureRejections } from "mysql2/typings/mysql/lib/Connection";
 import { createNewShopRecord } from "../services/shop_service";
 import {
   createNewUserRecord,
   getUserIdByEmail,
 } from "../services/user_service";
 
-const addNewUser = async (req: Request, res: Response) => {
+const addNewUser = (req: Request, res: Response) => {
   createNewUserRecord(
     req.body.firstName,
     req.body.lastName,
     req.body.email,
     req.body.password
   )
-    .then(async () => {
+    .then(() => {
       return getUserIdByEmail(req.body.email);
     })
     .then(async (result) => {
