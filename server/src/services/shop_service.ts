@@ -1,4 +1,4 @@
-import { getMeAPromise } from "../utils/promiseMe";
+import promiseMe from "../utils/promiseMe";
 
 export const createNewShopRecord = async (
   userId: number,
@@ -6,5 +6,6 @@ export const createNewShopRecord = async (
 ) => {
   const newShop = `INSERT INTO shops (userId, shopName) VALUES (?, ?);`;
   const shopName = firstName + "'s Gear Shop";
-  await getMeAPromise(newShop, [userId, shopName]);
+  const args: Array<number | string> = [userId, shopName];
+  await promiseMe(newShop, args);
 };

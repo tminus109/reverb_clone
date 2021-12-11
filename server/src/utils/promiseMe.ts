@@ -1,19 +1,12 @@
 import dbPool from "../db";
 
-export function getMeAPromise(
-  query: string,
-  ...placeholders: any
-): Promise<any> {
+function promiseMe(query: string, args: any[]): Promise<any> {
   return new Promise((resolve, reject) => {
     dbPool.getConnection((err, connection) => {
       if (err) {
         reject(err);
       } else {
-        console.log("connected as id " + connection.threadId);
-        connection.query(query, [...placeholders], (err, result) => {
-          ///
-          console.log(query);
-          ///
+        connection.query(query, [...args], (err, result) => {
           connection.release();
           if (err) {
             reject(err);
@@ -25,3 +18,5 @@ export function getMeAPromise(
     });
   });
 }
+
+export default promiseMe;
