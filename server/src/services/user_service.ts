@@ -24,11 +24,15 @@ export const getUserIdByEmail = async (email: string): Promise<number> => {
   }
 };
 
-export const getUserRecordByEmail = async (email: string): Promise<User> => {
+export const getUserRecordByEmail = async (
+  email: string
+): Promise<User | null> => {
   const user = `SELECT * FROM users where email = ?`;
   const args: Array<string> = [email];
-  return await promiseMe(user, args);
-  ///
-  // to be revised return statement!!!
-  ///
+  const result: Array<User> = await promiseMe(user, args);
+  if (result.length > 0) {
+    return result[0];
+  } else {
+    return null;
+  }
 };
