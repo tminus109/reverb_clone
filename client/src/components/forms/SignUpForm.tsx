@@ -40,6 +40,7 @@ function SignUpForm() {
           First Name:
           <input
             id="first_name"
+            data-testid="first_name"
             type="text"
             required
             value={firstName}
@@ -52,6 +53,7 @@ function SignUpForm() {
           Last Name:
           <input
             id="last_name"
+            data-testid="last_name"
             type="text"
             required
             value={lastName}
@@ -64,6 +66,7 @@ function SignUpForm() {
           Email:
           <input
             id="email"
+            data-testid="email"
             type="text"
             required
             value={email}
@@ -77,6 +80,7 @@ function SignUpForm() {
           Email Confirmation:
           <input
             id="email2"
+            data-testid="email2"
             type="text"
             required
             value={email2}
@@ -90,6 +94,7 @@ function SignUpForm() {
           Password:
           <input
             id="password"
+            data-testid="password"
             type="text"
             required
             value={password}

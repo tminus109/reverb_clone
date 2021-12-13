@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot test 1`] = `
+exports[`Snapshot 1`] = `
 <div
   className="signin_form"
 >
@@ -15,6 +15,7 @@ exports[`Snapshot test 1`] = `
     >
       Email:
       <input
+        data-testid="email"
         id="email"
         onChange={[Function]}
         required={true}
@@ -28,6 +29,7 @@ exports[`Snapshot test 1`] = `
     >
       Password:
       <input
+        data-testid="password"
         id="password"
         onChange={[Function]}
         type="text"

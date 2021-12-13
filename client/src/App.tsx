@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./views/SignUp";
 import SignIn from "./views/SignIn";
@@ -8,6 +9,10 @@ import NotFound from "./views/NotFound";
 
 // eslint-disable-next-line react/function-component-definition
 function App() {
+  useEffect(() => {
+    // authenticate user to be implemented!
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

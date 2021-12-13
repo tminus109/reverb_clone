@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTokenContext } from "../../context/TokenContext";
 import handleSignIn from "../../services/handleSignIn";
 
@@ -35,6 +35,7 @@ function SignInForm() {
           Email:
           <input
             id="email"
+            data-testid="email"
             type="text"
             required
             value={email}
@@ -48,6 +49,7 @@ function SignInForm() {
           Password:
           <input
             id="password"
+            data-testid="password"
             type="text"
             value={password}
             onChange={(e: React.FormEvent<HTMLInputElement>) => {
