@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignUpForm from "../components/forms/SignUpForm";
 
