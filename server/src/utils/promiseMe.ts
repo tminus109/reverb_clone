@@ -1,6 +1,6 @@
 import dbPool from "../db";
 
-function promiseMe(query: string, args: any[]): Promise<any> {
+function dbPromise(query: string, args: any[]): Promise<any> {
   return new Promise((resolve, reject) => {
     dbPool.getConnection((err, connection) => {
       if (err) {
@@ -19,4 +19,4 @@ function promiseMe(query: string, args: any[]): Promise<any> {
   });
 }
 
-export default promiseMe;
+export default dbPromise;

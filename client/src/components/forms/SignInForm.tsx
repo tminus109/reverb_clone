@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useTokenContext } from "../../context/TokenContext";
 import handleSignIn from "../../services/handleSignIn";
 
@@ -12,7 +12,7 @@ function SignInForm() {
   const { setToken } = useTokenContext();
   const controller = new AbortController();
 
-  // useEffect(() => () => controller.abort());
+  useEffect(() => () => controller.abort());
 
   return (
     <div className="signin_form">

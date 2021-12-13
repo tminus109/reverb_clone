@@ -24,6 +24,7 @@ const handleSignIn = (
   if (!isEmail(email)) {
     setInvalidEmail("Email is not a valid email");
   }
+
   if (password.length < 8) {
     setInvalidPassword("Password must be at least 8 characters long");
   }

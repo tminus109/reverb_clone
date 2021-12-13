@@ -1,6 +1,6 @@
 import User from "../types/models/User";
 import { crypt } from "../utils/blowfishCrypt";
-import promiseMe from "../utils/promiseMe";
+import dbPromise from "../utils/promiseMe";
 
 export const createNewUserRecord = async (
   firstName: string,
@@ -10,18 +10,17 @@ export const createNewUserRecord = async (
 ) => {
   const newUser = `INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?);`;
   const args: Array<string> = [firstName, lastName, email, crypt(password)];
-  await promiseMe(newUser, args);
+  await dbPromise(newUser, args);
 };
 
 export const getUserIdByEmail = async (email: string): Promise<number> => {
   const userId = `SELECT id FROM users WHERE email = ?;`;
   const args: Array<string> = [email];
-  const result: Array<{ id: number }> = await promiseMe(userId, args);
+  const result: Array<{ id: number }> = await dbPromise(userId, args);
   if (result.length > 0) {
     return result[0].id;
-  } else {
-    return 0;
   }
+  return 0;
 };
 
 export const getUserRecordByEmail = async (
@@ -29,10 +28,9 @@ export const getUserRecordByEmail = async (
 ): Promise<User | null> => {
   const user = `SELECT * FROM users where email = ?`;
   const args: Array<string> = [email];
-  const result: Array<User> = await promiseMe(user, args);
+  const result: Array<User> = await dbPromise(user, args);
   if (result.length > 0) {
     return result[0];
-  } else {
-    return null;
   }
+  return null;
 };

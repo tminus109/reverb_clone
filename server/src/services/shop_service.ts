@@ -1,4 +1,4 @@
-import promiseMe from "../utils/promiseMe";
+import dbPromise from "../utils/promiseMe";
 
 export const createNewShopRecord = async (
   userId: number,
@@ -7,5 +7,5 @@ export const createNewShopRecord = async (
   const newShop = `INSERT INTO shops (userId, shopName) VALUES (?, ?);`;
   const shopName = firstName + "'s Gear Shop";
   const args: Array<number | string> = [userId, shopName];
-  await promiseMe(newShop, args);
+  await dbPromise(newShop, args);
 };
