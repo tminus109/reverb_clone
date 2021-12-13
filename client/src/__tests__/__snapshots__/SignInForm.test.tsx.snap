@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test 1`] = `
+<div
+  className="signin_form"
+>
+  <h1>
+    Sign in
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="email"
+    >
+      Email:
+      <input
+        id="email"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      
+    </label>
+    <label
+      htmlFor="password"
+    >
+      Password:
+      <input
+        id="password"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      
+    </label>
+    <input
+      type="submit"
+    />
+    <div
+      className="message"
+    >
+      
+    </div>
+  </form>
+</div>
+`;
