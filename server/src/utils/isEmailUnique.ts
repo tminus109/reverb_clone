@@ -1,4 +1,4 @@
-import { getUserIdByEmail } from "../services/user_service";
+import { getUserIdByEmail } from "../services/userService";
 
 const isEmailUnique = async (email: string): Promise<boolean> => {
   const userId = await getUserIdByEmail(email);

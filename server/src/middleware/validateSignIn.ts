@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { getUserRecordByEmail } from "../services/user_service";
+import { getUserRecordByEmail } from "../services/userService";
 
 const validateSignIn = (req: Request, res: Response, next: NextFunction) => {
   if (

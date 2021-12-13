@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
-import { createNewShopRecord } from "../services/shop_service";
-import {
-  createNewUserRecord,
-  getUserIdByEmail,
-} from "../services/user_service";
+import { createNewShopRecord } from "../services/shopService";
+import { createNewUserRecord, getUserIdByEmail } from "../services/userService";
 
 const addNewUser = (req: Request, res: Response) => {
   createNewUserRecord(

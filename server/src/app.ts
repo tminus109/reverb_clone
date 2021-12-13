@@ -4,9 +4,9 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import validateSignUp from "./middleware/validateSignUp";
-import signup_router from "./routes/signup";
+import signupRouter from "./routes/signupRoute";
 import validateSignIn from "./middleware/validateSignIn";
-import signin_router from "./routes/signin";
+import signinRouter from "./routes/signinRoute";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 app.use(express.json());
-app.use("/signup", validateSignUp, signup_router);
-app.use("/signin", validateSignIn, signin_router);
+app.use("/signup", validateSignUp, signupRouter);
+app.use("/signin", validateSignIn, signinRouter);
 
 export default server;
