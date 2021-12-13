@@ -105,7 +105,7 @@ function SignUpForm() {
           {invalidPassword && <p>{invalidPassword}</p>}
         </label>
         <span>(at least 8 characters)</span>
-        <input type="submit" />
+        <input type="submit" data-testid="button" />
         <div className="message">{message && <p>{message}</p>}</div>
       </form>
     </div>

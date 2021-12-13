@@ -82,6 +82,7 @@ exports[`Snapshot 1`] = `
       (at least 8 characters)
     </span>
     <input
+      data-testid="button"
       type="submit"
     />
     <div
