@@ -1,0 +1,16 @@
+.vscode
+coverage
+node_modules
+src/__mocks__
+src/__tests__
+setupTests.ts
+.dockerignore
+.env
+.env.example
+.eslintrc.json
+.gitignore
+.prettierignore
+.prettierrc.json
+Dockerfile
+*.md
+yarn.lock
