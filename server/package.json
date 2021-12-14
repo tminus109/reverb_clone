@@ -2,13 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "reverb clone app server",
-  "main": "app.ts",
+  "main": "index.ts",
   "repository": "https://github.com/tminus109/reverb_clone",
   "author": "tminus109",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "dev": "nodemon src/app.ts",
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
     "test": "jest"
   },
   "devDependencies": {
