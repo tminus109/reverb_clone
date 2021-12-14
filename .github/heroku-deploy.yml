@@ -1,0 +1,33 @@
+# name: "Heroku deployment"
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Deploy reverb_clone server to Heroku
+#         uses: gonuit/heroku-docker-deploy@v1.3.3
+#         with:
+#           email: ${{ secrets.HEROKU_EMAIL }}
+#           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+#           heroku_app_name: reverb-clone-server
+#           dockerfile_directory: ./server
+#           dockerfile_name: Dockerfile
+#           docker_options: "--no-cache"
+#           process_type: web
+#       - name: Deploy reverb_clone client to Heroku
+#         uses: gonuit/heroku-docker-deploy@v1.3.3
+#         with:
+#           email: ${{ secrets.HEROKU_EMAIL }}
+#           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+#           heroku_app_name: reverb-clone
+#           dockerfile_directory: ./client
+#           dockerfile_name: Dockerfile
+#           docker_options: "--no-cache"
+#           process_type: web
