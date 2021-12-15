@@ -1,6 +1,6 @@
 import User from "../types/models/User";
 import { crypt } from "../utils/blowfishCrypt";
-import dbPromise from "../utils/promiseMe";
+import dbPromise from "../utils/dbPromise";
 
 export const createNewUserRecord = async (
   firstName: string,

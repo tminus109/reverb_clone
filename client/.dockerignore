@@ -1,8 +1,8 @@
 .vscode
 coverage
 node_modules
-src/__mocks__
-src/__tests__
+**/__mocks__
+**/__tests__
 setupTests.ts
 .dockerignore
 .env

@@ -16,7 +16,7 @@ const addNewUser = (req: Request, res: Response) => {
       await createNewShopRecord(result, req.body.firstName);
       res.status(201).json({
         message:
-          "Sign up was successful, confirm your account by clicking on the link sent to your email before sign in",
+          "Signup was successful, confirm your account by clicking on the link sent to your email before signin",
       });
     })
     .catch((error) => {

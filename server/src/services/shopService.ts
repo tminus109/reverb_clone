@@ -1,4 +1,4 @@
-import dbPromise from "../utils/promiseMe";
+import dbPromise from "../utils/dbPromise";
 
 export const createNewShopRecord = async (
   userId: number,
